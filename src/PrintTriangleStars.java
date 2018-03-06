@@ -10,6 +10,7 @@ public class PrintTriangleStars
 		printStars(n-1);
 	}
 
+	// Part B
 	public static void printTriangle(int n)
 	{
 		printTriangleRecursive(n, n-1);
@@ -24,6 +25,16 @@ public class PrintTriangleStars
 		printTriangleRecursive(n, sub-1);
 	}
 
+	// Part C
+	public static void printTriangleInverse(int n)
+	{
+		if(n < 0)
+			return;
+		printStars(n);
+		System.out.println();
+		printTriangleInverse(n-1);
+	}
+
 	public static void main(String[] args)
 	{
 		Scanner kb = new Scanner(System.in);
@@ -31,7 +42,13 @@ public class PrintTriangleStars
 		int rows = kb.nextInt();
 		kb.nextLine();
 
+		System.out.println("Would you like it to be inverted?(y/n) ");
+		boolean invert = kb.next().charAt(0) == 'y';
+
 		System.out.println("Here you go:");
-		printTriangle(rows);
+		if(invert)
+			printTriangleInverse(rows);
+		else
+			printTriangle(rows);
 	}
 }
